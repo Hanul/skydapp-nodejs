@@ -1,0 +1,1 @@
+{"version":3,"file":"AbstractSocketClient.d.ts","sourceRoot":"","sources":["../../src/server/AbstractSocketClient.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,gBAAgB,CAAC;AAEhD,MAAM,CAAC,OAAO,CAAC,QAAQ,OAAO,oBAAqB,SAAQ,cAAc;aACrD,IAAI,CAAC,MAAM,EAAE,MAAM,EAAE,GAAG,MAAM,EAAE,GAAG,EAAE,GAAG,IAAI;CAC/D"}

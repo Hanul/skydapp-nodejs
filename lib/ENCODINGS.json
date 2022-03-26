@@ -1,0 +1,19 @@
+{
+    "application/javascript": "utf-8",
+    "text/javascript": "utf-8",
+    "application/json": "utf-8",
+    "application/wasm": "utf-8",
+    "text/css": "utf-8",
+    "text/plain": "utf-8",
+    "text/x-markdown": "utf-8",
+    "text/html": "utf-8",
+    "image/png": "binary",
+    "image/jpeg": "binary",
+    "image/gif": "binary",
+    "image/svg+xml": "binary",
+    "audio/mpeg": "binary",
+    "audio/ogg": "binary",
+    "video/ogv": "binary",
+    "video/mp4": "binary",
+    "video/webm": "binary"
+}

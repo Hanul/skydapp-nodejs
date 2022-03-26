@@ -1,0 +1,1 @@
+{"version":3,"file":"DbData.d.ts","sourceRoot":"","sources":["../../src/mongodb/DbData.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,WAAW,MAAM;IAC3B,EAAE,EAAE,MAAM,CAAC;IACX,UAAU,EAAE,MAAM,CAAC;IACnB,UAAU,CAAC,EAAE,MAAM,CAAC;CACvB"}

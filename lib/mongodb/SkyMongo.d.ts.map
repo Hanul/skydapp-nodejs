@@ -1,0 +1,1 @@
+{"version":3,"file":"SkyMongo.d.ts","sourceRoot":"","sources":["../../src/mongodb/SkyMongo.ts"],"names":[],"mappings":"AAEA,cAAM,QAAQ;IAEV,OAAO,CAAC,MAAM,CAA0B;IACxC,OAAO,CAAC,EAAE,CAAiB;IAEd,OAAO,CAAC,GAAG,EAAE,MAAM,EAAE,MAAM,EAAE,MAAM;IAMzC,gBAAgB,CAAC,cAAc,EAAE,MAAM;CAMjD;;AAED,wBAA8B"}

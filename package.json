@@ -1,0 +1,26 @@
+{
+    "name": "skydapp-nodejs",
+    "author": "Sim Young Jae",
+    "homepage": "https://github.com/Hanul/skydapp-nodejs",
+    "version": "0.0.1",
+    "types": "./lib/index.d.ts",
+    "main": "./lib/index.js",
+    "dependencies": {
+        "skydapp-common": "^0.0.1",
+        "@types/formidable": "^1.2.4",
+        "@types/ws": "^7.4.4",
+        "@types/mongodb": "^4.0.7",
+        "formidable": "^1.2.2",
+        "ws": "^7.4.6",
+        "mongodb": "^4.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "^15.14.0",
+        "@typescript-eslint/eslint-plugin": "^4.12.0",
+        "@typescript-eslint/parser": "^4.12.0",
+        "eslint": "^7.17.0",
+        "source-map-loader": "^2.0.0",
+        "ts-loader": "^8.0.13",
+        "typescript": "^4.1.3"
+    }
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"SocketClient.js","sourceRoot":"","sources":["../../src/server/SocketClient.ts"],"names":[],"mappings":";;;;;AAAA,kFAA0D;AAE1D,MAAqB,YAAa,SAAQ,8BAAoB;IAEnD,IAAI,CAAC,MAAc,EAAE,GAAG,MAAa;QACxC,MAAM,IAAI,KAAK,CAAC,yBAAyB,CAAC,CAAC;IAC/C,CAAC;CACJ;AALD,+BAKC"}
