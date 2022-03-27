@@ -98,6 +98,12 @@ export default class WebServer extends EventContainer {
             SkyLog.error(error, this.options);
         });
 
+        setInterval(async () => {
+            const key = await SkyFiles.readBuffer(this.options.key);
+            const cert = await SkyFiles.readBuffer(this.options.cert);
+            this.httpsServer?.setSecureContext({ key, cert });
+        }, 86400000);
+
         if (this.options.httpPort !== undefined) {
             // http -> https redirect
             HTTP.createServer((req, res) => {
