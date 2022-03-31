@@ -2,7 +2,7 @@
     "name": "skydapp-nodejs",
     "author": "Sim Young Jae",
     "homepage": "https://github.com/Hanul/skydapp-nodejs",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "types": "./lib/index.d.ts",
     "main": "./lib/index.js",
     "dependencies": {
