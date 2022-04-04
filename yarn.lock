@@ -3885,10 +3885,10 @@ simple-get@^2.7.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
-skydapp-common@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/skydapp-common/-/skydapp-common-0.0.1.tgz#e0e39fc1c1944030d120c93015ab29693dad7ecb"
-  integrity sha512-ukMK46BxALmwyex3Q0J9MJL5hReV2UdTWoxN1O9McQPzCVSwCOK35DiLiyVDy0yPKc9U8/jv4SPr84BEmQxojg==
+skydapp-common@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/skydapp-common/-/skydapp-common-0.0.2.tgz#a0fd41d7e0529fbcf401c0a96fd88a33af00dea6"
+  integrity sha512-ktVeaTx6ZgsmcmttW3sDeZs4qz0ZB/x82QUNdEbFkzVD06WhYSow1PAlDrGaY+cxo8W4PGVZzW4mDKYKgk5qag==
 
 slash@^3.0.0:
   version "3.0.0"

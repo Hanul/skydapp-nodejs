@@ -6,5 +6,6 @@ export default class WebSocketServer {
     clients: WebSocketClient[];
     constructor(webServer: WebServer, handler: (client: WebSocketClient) => void);
     private launch;
+    broadcast(method: string, ...params: any[]): void;
 }
 //# sourceMappingURL=WebSocketServer.d.ts.map

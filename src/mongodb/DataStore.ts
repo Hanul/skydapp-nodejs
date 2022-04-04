@@ -10,13 +10,17 @@ export default class DataStore<DT> {
         this.collection = SkyMongo.createCollection(name);
     }
 
+    private cleanDataForUpdate(data: any): any {
+        delete data.id;
+        delete data._id;
+        delete data.createTime;
+        delete data.updateTime;
+        return data;
+    }
+
     private cleanData(data: any): any {
         const cleaned = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
-        delete cleaned.id;
-        delete cleaned._id;
-        delete cleaned.createTime;
-        delete cleaned.updateTime;
-        return cleaned;
+        return this.cleanDataForUpdate(cleaned);
     }
 
     private updateOrders(cleaned: any) {
@@ -42,11 +46,11 @@ export default class DataStore<DT> {
         return orders;
     }
 
-    public async idExists(_id: number | string): Promise<boolean> {
+    public async idExists(_id: number | string | ObjectId): Promise<boolean> {
         return await this.collection.findOne({ _id }) !== null;
     }
 
-    public async get(_id: number | string): Promise<(DT & DbData) | undefined> {
+    public async get(_id: number | string | ObjectId): Promise<(DT & DbData) | undefined> {
         const data: any = await this.collection.findOne({ _id });
         if (data === null) {
             return undefined;
@@ -115,15 +119,31 @@ export default class DataStore<DT> {
     }
 
     public async set(_id: number | string, data: DT) {
-        const cleaned = this.cleanData(data);
         if (await this.idExists(_id) !== true) {
+            const cleaned = this.cleanData(data);
             cleaned._id = _id;
             cleaned.createTime = Date.now();
             await this.collection.insertOne(cleaned);
         } else {
+            const cleaned = this.cleanDataForUpdate(data);
             cleaned.updateTime = Date.now();
             await this.collection.updateOne({ _id }, this.updateOrders(cleaned));
         }
+    }
+
+    public async create(_id: number | string, data: DT) {
+        const cleaned = this.cleanData(data);
+        cleaned._id = _id;
+        cleaned.createTime = Date.now();
+        await this.collection.insertOne(cleaned);
+    }
+
+    public async update(_id: number | string | ObjectId, data: any, arrayFilters?: any[]) {
+        const cleaned = this.cleanData(data);
+        cleaned.updateTime = Date.now();
+        await this.collection.updateOne({ _id }, this.updateOrders(cleaned), {
+            arrayFilters
+        });
     }
 
     public async add(data: DT) {
