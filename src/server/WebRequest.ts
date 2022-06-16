@@ -8,7 +8,7 @@ export default class WebRequest {
     public method: string;
     public ip: string;
     public parameterString: string;
-    public parameters: { [name: string]: any } = {};
+    public parameters: { [name: string]: string | undefined } = {};
     public uri: string;
 
     public responsed = false;
@@ -54,9 +54,9 @@ export default class WebRequest {
         const queryParams = Querystring.parse(this.parameterString);
         for (const [name, param] of Object.entries(queryParams)) {
             if (Array.isArray(param) === true) {
-                this.parameters[name] = queryParams[param!.length - 1];
+                this.parameters[name] = queryParams[param!.length - 1] as any;
             } else {
-                this.parameters[name] = queryParams[name];
+                this.parameters[name] = queryParams[name] as any;
             }
         }
 

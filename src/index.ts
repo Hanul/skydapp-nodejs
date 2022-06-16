@@ -10,3 +10,5 @@ export { default as parseUpload } from "./server/upload/parseUpload";
 
 export { default as SkyMongo } from "./mongodb/SkyMongo";
 export { default as DataStore } from "./mongodb/DataStore";
+
+export { default as SkyFiles } from "./SkyFiles";

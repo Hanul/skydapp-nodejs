@@ -8,7 +8,7 @@ export default class WebRequest {
     ip: string;
     parameterString: string;
     parameters: {
-        [name: string]: any;
+        [name: string]: string | undefined;
     };
     uri: string;
     responsed: boolean;

@@ -1,8 +1,8 @@
-import { Filter, ObjectId, Sort } from "mongodb";
+import { Filter, ObjectId, Sort, UpdateFilter } from "mongodb";
 import DbData from "./DbData";
 export default class DataStore<DT> {
     private collection;
-    constructor(name: string);
+    constructor(name: string, alias?: string);
     private cleanDataForUpdate;
     private cleanData;
     private updateOrders;
@@ -20,9 +20,9 @@ export default class DataStore<DT> {
     findOne(query: Filter<DT>, sort?: Sort): Promise<(DT & DbData) | undefined>;
     set(_id: number | string, data: DT): Promise<void>;
     create(_id: number | string, data: DT): Promise<void>;
-    update(_id: number | string | ObjectId, data: any, arrayFilters?: any[]): Promise<void>;
+    update(_id: number | string | ObjectId, data: Partial<DT> | UpdateFilter<DT>, arrayFilters?: any[]): Promise<void>;
     add(data: DT): Promise<void>;
-    delete(_id: number | string): Promise<void>;
+    delete(_id: number | string | ObjectId): Promise<void>;
     createIndex(index: any): Promise<void>;
     deleteIndex(index: any): Promise<void>;
     getIndexes(): Promise<any[]>;

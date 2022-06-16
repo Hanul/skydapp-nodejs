@@ -65,4 +65,32 @@ export default class WebResponse {
             this.webRequest.responsed = true;
         }
     }
+
+    public apiResponse(info?: any) {
+        this.response({
+            headers: {
+                "Access-Control-Allow-Credentials": true,
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT, DELETE",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Origin": this.webRequest.headers.origin === undefined ? "*" : this.webRequest.headers.origin,
+            },
+            contentType: "application/json",
+            content: info === undefined ? undefined : (
+                typeof info === "string" ? info : JSON.stringify(info)
+            ),
+        });
+    }
+
+    public apiResponseError(errorMessage?: string) {
+        this.response({
+            headers: {
+                "Access-Control-Allow-Credentials": true,
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT, DELETE",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Origin": this.webRequest.headers.origin === undefined ? "*" : this.webRequest.headers.origin,
+            },
+            statusCode: 500,
+            content: errorMessage,
+        });
+    }
 }

@@ -16,5 +16,7 @@ export default class WebResponse {
         encoding?: BufferEncoding;
         content?: string | Buffer;
     }): void;
+    apiResponse(info?: any): void;
+    apiResponseError(errorMessage?: string): void;
 }
 //# sourceMappingURL=WebResponse.d.ts.map

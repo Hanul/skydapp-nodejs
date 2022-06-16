@@ -1,4 +1,4 @@
-import { Collection, Filter, ObjectId, Sort } from "mongodb";
+import { Collection, Filter, ObjectId, Sort, UpdateFilter } from "mongodb";
 import DbData from "./DbData";
 import SkyMongo from "./SkyMongo";
 
@@ -6,8 +6,8 @@ export default class DataStore<DT> {
 
     private collection: Collection;
 
-    constructor(name: string) {
-        this.collection = SkyMongo.createCollection(name);
+    constructor(name: string, alias?: string) {
+        this.collection = SkyMongo.createCollection(name, alias);
     }
 
     private cleanDataForUpdate(data: any): any {
@@ -138,11 +138,11 @@ export default class DataStore<DT> {
         await this.collection.insertOne(cleaned);
     }
 
-    public async update(_id: number | string | ObjectId, data: any, arrayFilters?: any[]) {
+    public async update(_id: number | string | ObjectId, data: Partial<DT> | UpdateFilter<DT>, arrayFilters?: any[]) {
         const cleaned = this.cleanData(data);
         cleaned.updateTime = Date.now();
         await this.collection.updateOne({ _id }, this.updateOrders(cleaned), {
-            arrayFilters
+            arrayFilters,
         });
     }
 
@@ -152,7 +152,7 @@ export default class DataStore<DT> {
         await this.collection.insertOne(cleaned);
     }
 
-    public async delete(_id: number | string) {
+    public async delete(_id: number | string | ObjectId) {
         await this.collection.deleteOne({ _id });
     }
 
