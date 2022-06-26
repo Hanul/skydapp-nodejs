@@ -66,6 +66,18 @@ export default class WebResponse {
         }
     }
 
+    public response404() {
+        this.response({
+            headers: {
+                "Access-Control-Allow-Credentials": true,
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT, DELETE",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Origin": this.webRequest.headers.origin === undefined ? "*" : this.webRequest.headers.origin,
+            },
+            statusCode: 404,
+        });
+    }
+
     public apiResponse(info?: any) {
         this.response({
             headers: {
@@ -74,7 +86,9 @@ export default class WebResponse {
                 "Access-Control-Allow-Headers": "*",
                 "Access-Control-Allow-Origin": this.webRequest.headers.origin === undefined ? "*" : this.webRequest.headers.origin,
             },
-            contentType: "application/json",
+            contentType: info === undefined ? undefined : (
+                typeof info === "string" ? undefined : "application/json"
+            ),
             content: info === undefined ? undefined : (
                 typeof info === "string" ? info : JSON.stringify(info)
             ),

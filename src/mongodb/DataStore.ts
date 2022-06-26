@@ -150,6 +150,7 @@ export default class DataStore<DT> {
         const cleaned = this.cleanData(data);
         cleaned.createTime = Date.now();
         await this.collection.insertOne(cleaned);
+        return cleaned._id.toString();
     }
 
     public async delete(_id: number | string | ObjectId) {

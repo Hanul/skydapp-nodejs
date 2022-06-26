@@ -21,7 +21,7 @@ export default class DataStore<DT> {
     set(_id: number | string, data: DT): Promise<void>;
     create(_id: number | string, data: DT): Promise<void>;
     update(_id: number | string | ObjectId, data: Partial<DT> | UpdateFilter<DT>, arrayFilters?: any[]): Promise<void>;
-    add(data: DT): Promise<void>;
+    add(data: DT): Promise<any>;
     delete(_id: number | string | ObjectId): Promise<void>;
     createIndex(index: any): Promise<void>;
     deleteIndex(index: any): Promise<void>;

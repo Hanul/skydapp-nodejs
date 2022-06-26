@@ -16,6 +16,7 @@ export default class WebResponse {
         encoding?: BufferEncoding;
         content?: string | Buffer;
     }): void;
+    response404(): void;
     apiResponse(info?: any): void;
     apiResponseError(errorMessage?: string): void;
 }
