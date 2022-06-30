@@ -26,7 +26,10 @@ export default class WebSocketServer {
         }).on("connection", (webSocket: WebSocket, req: HTTP.IncomingMessage) => {
             const client = new WebSocketClient(this, webSocket, req);
             this.clients.push(client);
-            webSocket.on("close", () => SkyUtil.pull(this.clients, client));
+            client.on("disconnect", () => {
+                SkyUtil.pull(this.clients, client);
+                client.delete();
+            });
             this.handler(client);
         });
 

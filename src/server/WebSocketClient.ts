@@ -40,10 +40,21 @@ export default class WebSocketClient extends AbstractSocketClient {
 
         webSocket.on("message", async (json: string) => {
             const data = JSON.parse(json);
-            const results = await this.fireEvent(data.method, ...data.params);
-            if (data.__send_key !== undefined) {
-                for (const result of results) {
-                    this.send(`__callback_${data.__send_key}`, result);
+            try {
+                const results = await this.fireEvent(data.method, ...data.params);
+                if (data.__send_key !== undefined) {
+                    if (results.length === 0) {
+                        console.error("메소드를 찾을 수 없음", data);
+                        this.send(`__error_${data.__send_key}`, "메소드를 찾을 수 없음");
+                    } else {
+                        for (const result of results) {
+                            this.send(`__callback_${data.__send_key}`, result);
+                        }
+                    }
+                }
+            } catch (error: any) {
+                if (data.__send_key !== undefined) {
+                    this.send(`__error_${data.__send_key}`, error.toString());
                 }
             }
         });

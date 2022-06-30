@@ -4,7 +4,7 @@ import SkyMongo from "./SkyMongo";
 
 export default class DataStore<DT> {
 
-    private collection: Collection;
+    public collection: Collection;
 
     constructor(name: string, alias?: string) {
         this.collection = SkyMongo.createCollection(name, alias);

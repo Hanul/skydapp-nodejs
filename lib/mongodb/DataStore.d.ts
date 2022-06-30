@@ -1,7 +1,7 @@
-import { Filter, ObjectId, Sort, UpdateFilter } from "mongodb";
+import { Collection, Filter, ObjectId, Sort, UpdateFilter } from "mongodb";
 import DbData from "./DbData";
 export default class DataStore<DT> {
-    private collection;
+    collection: Collection;
     constructor(name: string, alias?: string);
     private cleanDataForUpdate;
     private cleanData;
