@@ -26,6 +26,7 @@ class SkyMongo {
             await session.commitTransaction();
             await session.endSession();
         } catch (error) {
+            console.error(error);
             await session.abortTransaction();
             await session.endSession();
             throw error;
